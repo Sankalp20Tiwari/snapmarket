@@ -13,6 +13,10 @@ export default withAuth(
             authorized: ({token,req})=> {
                 const {pathname} = req.nextUrl
 
+                //allow webhook endpoint
+                if(pathname === "/api/webhook"){
+                    return true
+                }
 
                 //auth related path
                 if(pathname.startsWith("/api/auth") ||
