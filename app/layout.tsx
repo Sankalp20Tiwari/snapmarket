@@ -4,6 +4,7 @@ import "./globals.css";
 import Providers from "./components/Providers";
 import Script from "next/script";
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
         />
         <Providers>
         <main className="w-full bg-black">
+        <Header />
         {children}
         <Footer />
         </main>
