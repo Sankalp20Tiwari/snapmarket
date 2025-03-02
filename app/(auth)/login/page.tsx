@@ -73,7 +73,7 @@ const LoginPage = () => {
 
             {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
 
-            <Button type='submit' className='hover:text-green-500'>Register</Button>
+            <Button type='submit' className='hover:text-green-500'>Login</Button>
        </form>
        <div className='flex gap-2'>
          <p className='text-white'>Don&apos;t have an account?</p>
