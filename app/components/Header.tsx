@@ -1,16 +1,20 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
 import { Camera, LayoutDashboard, LogOut, Menu, ShoppingBag, Upload, User, X } from 'lucide-react';
 import { gsap } from 'gsap';
+import { usePathname } from 'next/navigation';
+
 
 const Navbar = () => {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isAuthPage = pathname.startsWith('/login') || pathname.startsWith('/register');
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -44,30 +48,30 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-background/90 backdrop-blur-md border-b border-border' : 'bg-transparent'
+      scrolled ? 'bg-transparent backdrop-blur-2xl border-b border-border' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/">
           <div className="flex items-center space-x-2 nav-item">
-            <Camera className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold teal-text">SnapMarket</span>
+            <Camera className="h-8 w-8 text-teal-600" />
+            <span className="text-2xl font-bold text-teal-600">SnapMarket</span>
           </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          { !isAuthPage && !session && <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="nav-item text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                className="nav-item text-foreground hover:text-primary transition-colors duration-200 font-medium text-teal-600"
               >
                 {item.name}
               </a>
             ))}
-          </div>
+          </div>}
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center space-x-4">
@@ -130,7 +134,7 @@ const Navbar = () => {
         {/* Mobile Dropdown */}
         {isOpen && (
           <div className="md:hidden bg-card/95 backdrop-blur-md border border-border rounded-lg mt-2 p-4 space-y-4">
-            {navItems.map((item) => (
+            {!isAuthPage && !session && navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
