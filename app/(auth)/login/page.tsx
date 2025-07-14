@@ -40,7 +40,7 @@ const LoginPage = () => {
   return (
     <div className="flex flex-col md:flex-row h-screen w-full">
 
-      <div className="w-full md:w-1/2 flex flex-col justify-center px-8 py-12 bg-white">
+      <div className="w-full md:w-1/2 flex flex-col justify-center px-8 py-12 bg-white min-h-screen">
         <div className="w-full max-w-md mx-auto space-y-6">
           <div className="flex justify-between items-center">
             <div className="text-6xl ">📸</div>

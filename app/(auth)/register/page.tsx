@@ -34,9 +34,9 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen w-full">
+    <div className="flex flex-col md:flex-row h-screen w-full ">
       {/* Left side */}
-      <div className="w-full md:w-1/2 flex flex-col justify-center px-8 py-12 ">
+      <div className="w-full md:w-1/2 flex items-center justify-center px-4 py-12  min-h-screen ">
         <div className="w-full max-w-md mx-auto space-y-6">
           <div className="flex justify-between items-center">
             <div className="text-6xl">📸</div>
