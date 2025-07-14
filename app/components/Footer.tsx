@@ -47,8 +47,8 @@ const Footer = () => {
             {/* Brand section */}
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-2 mb-6">
-                <Camera className="h-8 w-8 text-primary" />
-                <span className="text-2xl font-bold teal-text">SnapMarket</span>
+                <Camera className="h-8 w-8 text-teal-600" />
+                <span className="text-2xl font-bold text-teal-600">SnapMarket</span>
               </div>
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 The world's most exclusive marketplace for premium photography. 
@@ -104,7 +104,7 @@ const Footer = () => {
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none"
               />
-              <Button className="glow-effect">
+              <Button className="bg-teal-600 glow-effect text-white">
                 Subscribe
               </Button>
             </div>
