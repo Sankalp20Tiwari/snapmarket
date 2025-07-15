@@ -56,7 +56,7 @@ const Navbar = () => {
           <Link href="/">
           <div className="flex items-center space-x-2 nav-item">
             <Camera className="h-8 w-8 text-teal-600" />
-            <span className="text-2xl font-bold text-teal-600">SnapMarket</span>
+            <span className="text-2xl font-bold text-white">SnapMarket</span>
           </div>
           </Link>
 
