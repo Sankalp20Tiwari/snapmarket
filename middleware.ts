@@ -29,7 +29,7 @@ export default withAuth(
                 //public routes
                 if(pathname === "/" || 
                     pathname.startsWith("/api/products") ||
-                    pathname.startsWith("/products")
+                    pathname.startsWith("/products") || pathname === "/contact" 
                 ){
                     return true
                 }
