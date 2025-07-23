@@ -1,6 +1,6 @@
 'use client';
 
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
@@ -15,6 +15,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isAuthPage = pathname.startsWith('/login') || pathname.startsWith('/register');
+  const isContactPage = pathname === '/contact';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -35,7 +36,8 @@ const Navbar = () => {
     { name: 'Browse', href: '#browse' },
     { name: 'Sell', href: '#sell' },
     { name: 'Pricing', href: '#pricing' },
-    { name: 'About', href: '#about' }
+    { name: 'About', href: '#about' },
+    { name: 'Contact', href: '/contact' }
   ];
 
   const handleSignOut = async () => {
@@ -61,7 +63,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          { !isAuthPage && !session && <div className="hidden md:flex items-center space-x-8">
+          { !isAuthPage && !isContactPage && !session && <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -134,7 +136,7 @@ const Navbar = () => {
         {/* Mobile Dropdown */}
         {isOpen && (
           <div className="md:hidden bg-card/95 backdrop-blur-md border border-border rounded-lg mt-2 p-4 space-y-4">
-            {!isAuthPage && !session && navItems.map((item) => (
+            {!isAuthPage && !isContactPage && !session && navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
